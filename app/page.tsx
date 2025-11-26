@@ -12,7 +12,6 @@ export default function CLIDocsSite() {
     setCopiedCommand(text);
     setTimeout(() => setCopiedCommand(''), 2000);
   };
-
   const commands = [
     {
       id: 'init',
@@ -71,14 +70,12 @@ export default function CLIDocsSite() {
       example: 'my-own-cli commit --auto'
     }
   ];
-
   const sections = [
     { id: 'getting-started', name: 'Getting Started', icon: Zap },
     { id: 'commands', name: 'Commands', icon: Command },
     { id: 'examples', name: 'Examples', icon: Code },
     { id: 'api', name: 'API Reference', icon: BookOpen }
   ];
-
   const CommandBlock = ({ command, example }:{command?:string, example?:string}) => (
     <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm relative group">
       <div className="flex items-center justify-between mb-2">
@@ -185,7 +182,7 @@ export default function CLIDocsSite() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <CommandBlock 
-                example="npm install -g my-own-cli"
+                example="pip install git+https://github.com/MuhammadHassaanArain/my_own_cli.git"
               />
             </div>
 
@@ -218,6 +215,7 @@ export default function CLIDocsSite() {
         </section>
       )}
 
+
       {/* Commands Section */}
       {activeSection === 'commands' && (
         <section className="py-20 px-4">
@@ -226,78 +224,81 @@ export default function CLIDocsSite() {
             <p className="text-gray-400 text-center mb-12">Complete list of available commands</p>
             
             <div className="space-y-6">
-              {commands.map(cmd => (
-                <div key={cmd.id} className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-emerald-500/30 transition-all">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-emerald-400 mb-2">{cmd.name}</h3>
-                      <p className="text-gray-300 mb-4">{cmd.description}</p>
+              {/* My Own CLI Installation and Usage */}
+              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-emerald-500/30 transition-all">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-emerald-400 mb-2">My Own CLI</h3>
+                    <p className="text-gray-300 mb-4">
+                      Instructions to install and run <strong>My Own CLI</strong>, your AI-powered CLI agent.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  {/* Method 1: Direct pip install */}
+                  <div>
+                    <span className="text-sm text-gray-500 uppercase tracking-wide">Method 1: Install via pip</span>
+                    <div className="mt-2 bg-gray-950 rounded-lg p-3 font-mono text-sm text-cyan-400 space-y-2">
+                      <div># Install the CLI package</div>
+                      <div>pip install git+https://github.com/MuhammadHassaanArain/my_own_cli.git</div>
+                      <div># Run the MCP server</div>
+                      <div>uv run uvicorn mcp_server.server:mcp_app --host 127.0.0.1 --port 8000 --reload</div>
+                      <div># Run the CLI agent</div>
+                      <div>my-own-cli</div>
                     </div>
                   </div>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <span className="text-sm text-gray-500 uppercase tracking-wide">Usage</span>
-                      <div className="mt-2 bg-gray-950 rounded-lg p-3 font-mono text-sm text-cyan-400">
-                        {cmd.usage}
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <span className="text-sm text-gray-500 uppercase tracking-wide">Example</span>
-                      <div className="mt-2">
-                        <CommandBlock example={cmd.example} />
-                      </div>
+
+                  {/* Method 2: Clone repo */}
+                  <div>
+                    <span className="text-sm text-gray-500 uppercase tracking-wide">Method 2: Clone repository</span>
+                    <div className="mt-2 bg-gray-950 rounded-lg p-3 font-mono text-sm text-cyan-400 space-y-2">
+                      <div># Clone the repository</div>
+                      <div>git clone https://github.com/MuhammadHassaanArain/my_own_cli.git</div>
+                      <div># Enter project directory</div>
+                      <div>cd my_own_cli</div>
+                      <div># Run the MCP server</div>
+                      <div>uv run uvicorn mcp_server.server:mcp_app --host 127.0.0.1 --port 8000 --reload</div>
+                      <div># Run the CLI agent</div>
+                      <div>uv run cli.main</div>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
             </div>
           </div>
         </section>
       )}
 
-      {/* Examples Section */}
+            {/* Examples Section */}
       {activeSection === 'examples' && (
         <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-bold mb-4 text-center">Usage Examples</h2>
-            <p className="text-gray-400 text-center mb-12">Real-world scenarios and workflows</p>
-            
+            <p className="text-gray-400 text-center mb-12">Simple prompts to start using My Own CLI</p>
+
             <div className="space-y-8">
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <ArrowRight className="w-5 h-5 mr-2 text-emerald-400" />
-                  Quick Start New Project
+                  Basic Prompts
                 </h3>
                 <div className="space-y-3">
-                  <CommandBlock example="my-own-cli init --template react-typescript" />
-                  <CommandBlock example="my-own-cli generate component Header --props title,subtitle" />
-                  <CommandBlock example="my-own-cli test --watch" />
-                </div>
-              </div>
+                  <CommandBlock example="my-own-cli: create-folder named made_by_agent at D:/my_path" />
+                  <p className="text-sm text-gray-400 pl-4">Create a folder at D:/my_path</p>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <ArrowRight className="w-5 h-5 mr-2 text-cyan-400" />
-                  Code Analysis & Refactoring
-                </h3>
-                <div className="space-y-3">
-                  <CommandBlock example="my-own-cli analyze src/ --security --performance" />
-                  <CommandBlock example="my-own-cli refactor src/utils/helper.js --suggest" />
-                  <CommandBlock example="my-own-cli docs generate --output docs/" />
-                </div>
-              </div>
+                  <CommandBlock example="my-own-cli: create-file greeting.py at D:/my_path/made_by_agent" />
+                  <p className="text-sm text-gray-400 pl-4">Create a Python file in that folder</p>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <ArrowRight className="w-5 h-5 mr-2 text-purple-400" />
-                  Interactive Development
-                </h3>
-                <div className="space-y-3">
-                  <CommandBlock example="my-own-cli chat" />
-                  <p className="text-sm text-gray-400 pl-4">Then ask: "How can I optimize database queries in my app?"</p>
-                  <CommandBlock example="my-own-cli commit --auto --conventional" />
+                  <CommandBlock example={`my-own-cli: write a simple greeting funtion in the file  D:/my_path/made_by_agent/greeting.py `} />
+                  <p className="text-sm text-gray-400 pl-4">Write a simple greeting function in the file</p>
+
+                  <CommandBlock example="my-own-cli: search for the word greeting in  D:/my_path/file.txt" />
+                  <p className="text-sm text-gray-400 pl-4">Search for the word 'greet' in the file</p>
+
+                  <CommandBlock example="my-own-cli: run the commad  dir at D:/my_path" />
+                  <p className="text-sm text-gray-400 pl-4">List the contents of the folder using a shell command</p>
                 </div>
               </div>
             </div>
@@ -305,61 +306,63 @@ export default function CLIDocsSite() {
         </section>
       )}
 
-      {/* API Reference Section */}
+      {/* First-Time User Guide Section */}
       {activeSection === 'api' && (
         <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4 text-center">API Reference</h2>
-            <p className="text-gray-400 text-center mb-12">Configuration and advanced options</p>
-            
-            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-8">
-              <h3 className="text-2xl font-semibold mb-6">Configuration File</h3>
-              <p className="text-gray-400 mb-4">Create a <code className="bg-gray-950 px-2 py-1 rounded text-emerald-400">my-own-cli.config.json</code> in your project root:</p>
-              
-              <div className="bg-gray-950 rounded-lg p-6 font-mono text-sm overflow-x-auto">
-                <pre className="text-gray-300">{`{
-  "model": "advanced",
-  "context": {
-    "includeFiles": ["src/**/*.js", "*.md"],
-    "excludeFiles": ["node_modules/**"]
-  },
-  "preferences": {
-    "codeStyle": "airbnb",
-    "testFramework": "jest",
-    "commitStyle": "conventional"
-  },
-  "apiKey": "your-api-key-here"
-}`}</pre>
+            <h2 className="text-4xl font-bold mb-4 text-center">Getting Started</h2>
+            <p className="text-gray-400 text-center mb-12">
+              Step-by-step guide for first-time users to run <strong>My Own CLI</strong>
+            </p>
+
+            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-8 space-y-6">
+              {/* Step 1: Follow commands */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-4">1. Install and Run the CLI</h3>
+                <p className="text-gray-400 mb-2">
+                  First, follow the installation commands listed in the <strong>Commands</strong> section to install and start the MCP server.
+                </p>
+                <div className="bg-gray-950 rounded-lg p-4 font-mono text-sm text-cyan-400">
+                  # Example for pip install method<br/>
+                  pip install git+https://github.com/MuhammadHassaanArain/my_own_cli.git<br/>
+                  uv run uvicorn mcp_server.server:mcp_app --host 127.0.0.1 --port 8000 --reload<br/>
+                  my-own-cli
+                </div>
               </div>
 
-              <div className="mt-8">
-                <h4 className="text-xl font-semibold mb-4">Environment Variables</h4>
-                <div className="space-y-2">
-                  <div className="bg-gray-950 rounded-lg p-4">
-                    <code className="text-cyan-400">MY_OWN_CLI_API_KEY</code>
-                    <p className="text-sm text-gray-400 mt-1">Your API authentication key</p>
-                  </div>
-                  <div className="bg-gray-950 rounded-lg p-4">
-                    <code className="text-cyan-400">MY_OWN_CLI_MODEL</code>
-                    <p className="text-sm text-gray-400 mt-1">AI model to use (basic, advanced, expert)</p>
-                  </div>
-                  <div className="bg-gray-950 rounded-lg p-4">
-                    <code className="text-cyan-400">MY_OWN_CLI_VERBOSE</code>
-                    <p className="text-sm text-gray-400 mt-1">Enable detailed logging (true/false)</p>
-                  </div>
+              {/* Step 2: Enter API key */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-4">2. Enter your API Key</h3>
+                <p className="text-gray-400 mb-2">
+                  On first run, the agent will prompt you to enter your API key. You need a Google Gemini API key to continue.
+                </p>
+                <div className="bg-gray-950 rounded-lg p-4 font-mono text-sm text-yellow-400 space-y-2">
+                  <div>Enter your API key : PASTE API KEY HERE </div>
+                
                 </div>
+                <p className="text-gray-400 mt-2">
+                  Paste your API key here, and once accepted, you are ready to use <strong>My Own CLI</strong>!
+                </p>
+              </div>
+
+              {/* Step 3: Ready to use */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-4">3. Start using the CLI</h3>
+                <p className="text-gray-400">
+                  After entering your API key, you can start issuing commands to your agent. Explore the <strong>Commands</strong> section for available actions.
+                </p>
               </div>
             </div>
           </div>
         </section>
       )}
-
+      
       {/* Footer */}
       <footer className="border-t border-gray-800 mt-20">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="text-center text-gray-400">
             <p className="mb-2">Built with ❤️ for developers who love their terminal</p>
-            <p className="text-sm">© 2024 my-own-cli. Open source and community driven.</p>
+            <p className="text-sm">© 2025 my-own-cli. Open source Project.</p>
           </div>
         </div>
       </footer>
