@@ -1,13 +1,14 @@
 "use client"
 import React, { useState } from 'react';
-import { Terminal, Command, Zap, BookOpen, Code, ArrowRight, Menu, X, Copy, Check } from 'lucide-react';
+import { Terminal, Command, Zap, BookOpen, Code, ArrowRight, Menu, X, Copy, Check, Github } from 'lucide-react';
 
-export default function CLIDocsSite() {
+export default function Page() {
+
   const [activeSection, setActiveSection] = useState('getting-started');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copiedCommand, setCopiedCommand] = useState('');
 
-  const copyToClipboard = (text:any) => {
+  const copyToClipboard = (text:string) => {
     navigator.clipboard.writeText(text);
     setCopiedCommand(text);
     setTimeout(() => setCopiedCommand(''), 2000);
@@ -81,7 +82,9 @@ export default function CLIDocsSite() {
       <div className="flex items-center justify-between mb-2">
         <span className="text-emerald-400">$</span>
         <button
-          onClick={() => copyToClipboard(example)}
+          // onClick={() => copyToClipboard(example)}
+          onClick={() => example && copyToClipboard(example)}
+
           className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-gray-800 rounded"
         >
           {copiedCommand === example ? (
@@ -107,7 +110,7 @@ export default function CLIDocsSite() {
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  my-own-cli
+                  My-Own-Cli
                 </h1>
                 <p className="text-xs text-gray-400">AI-Powered Terminal Agent</p>
               </div>
@@ -180,12 +183,23 @@ export default function CLIDocsSite() {
               Build, analyze, refactor, and ship faster with an intelligent CLI assistant that understands your code and workflow.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <CommandBlock 
                 example="pip install git+https://github.com/MuhammadHassaanArain/my_own_cli.git"
               />
-            </div>
 
+                <a
+                  href="https://github.com/MuhammadHassaanArain/my_own_cli"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700 hover:border-emerald-400 text-gray-200 hover:text-emerald-400 transition-all shadow-lg"
+                >
+                  <Github className="w-5 h-5" />
+                  View on GitHub
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+            </div>
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-emerald-500/30 transition-all">
                 <div className="w-12 h-12 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-4">
